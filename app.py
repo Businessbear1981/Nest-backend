@@ -135,7 +135,10 @@ app, socketio = create_app()
 
 
 if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))
+    host = os.environ.get("HOST", "0.0.0.0")
+    print(f"NEST backend starting on {host}:{port} — {len(app.url_map._rules)} routes")
     if socketio:
-        socketio.run(app, host=Config.HOST, port=Config.PORT, debug=Config.DEBUG)
+        socketio.run(app, host=host, port=port, debug=False, allow_unsafe_werkzeug=True)
     else:
-        app.run(host=Config.HOST, port=Config.PORT, debug=Config.DEBUG)
+        app.run(host=host, port=port, debug=False)
