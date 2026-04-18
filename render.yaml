@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: nest-backend
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app.py
+    envVars:
+      - key: PORT
+        value: 8000
+      - key: SECRET_KEY
+        value: nest-dev-secret-change-me
+      - key: JWT_SECRET_KEY
+        value: nest-dev-jwt-change-me
+      - key: FRONTEND_ORIGIN
+        value: https://nest-platform.vercel.app
+      - key: OPENROUTER_API_KEY
+        sync: false
+      - key: ANTHROPIC_MODEL
+        value: claude-sonnet-4-6
+      - key: ANTHROPIC_MAX_TOKENS
+        value: "4096"
+      - key: FUND_TICK_SECONDS
+        value: "60"
+      - key: B_TRANCHE_COUPON_PCT
+        value: "0.085"
+      - key: MGMT_FEE_PCT
+        value: "0.02"
+      - key: WC_SPREAD_BPS
+        value: "275"
